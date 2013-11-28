@@ -1,0 +1,424 @@
+/* line 12, ../_sass/app.sass */
+* {
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-appearance: none;
+}
+
+/* line 18, ../_sass/app.sass */
+#awesome_video {
+  position: absolute;
+  z-index: -9999;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 100%;
+}
+
+/* line 26, ../_sass/app.sass */
+.video_container {
+  position: absolute;
+  z-index: -9999;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+/* line 33, ../_sass/app.sass */
+html {
+  background: url("../img/bg_storm.jpg") no-repeat center center;
+  background-size: 100% auto;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/* line 41, ../_sass/app.sass */
+body {
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  color: white;
+  margin: 0;
+}
+
+/* line 47, ../_sass/app.sass */
+a {
+  color: #0cc6e8;
+}
+
+/* line 50, ../_sass/app.sass */
+.row {
+  margin: 0 auto;
+}
+
+/* line 53, ../_sass/app.sass */
+.white-bg {
+  background: whitesmoke;
+}
+
+/* line 56, ../_sass/app.sass */
+.header {
+  width: 100%;
+}
+/* line 58, ../_sass/app.sass */
+.header .logo {
+  width: 184px;
+  height: 44px;
+  margin: 0;
+  margin-left: 50px;
+  margin-top: 50px;
+  background-size: 184px 44px;
+  overflow: hidden;
+  z-index: 100;
+  background: url("../images/logo_new.png") no-repeat;
+  text-indent: -9999px;
+}
+
+/* line 70, ../_sass/app.sass */
+.mission-statement {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.95);
+  width: 80%;
+  padding-left: 10%;
+  padding-right: 10%;
+  text-shadow: 0 0px 10px rgba(0, 0, 0, 0.95);
+}
+
+/* line 77, ../_sass/app.sass */
+.distance {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0 0.3em 0 0.3em;
+  color: rgba(255, 255, 255, 0.05);
+  white-space: nowrap;
+}
+
+/* line 82, ../_sass/app.sass */
+.distance_active {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0 0.3em 0 0.3em;
+  color: rgba(255, 255, 255, 0.95);
+  white-space: nowrap;
+}
+
+/* line 88, ../_sass/app.sass */
+.main_img {
+  height: 80px;
+  margin-top: 4em;
+}
+
+/* line 91, ../_sass/app.sass */
+h1 {
+  font-size: 4.5em;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin-top: 0.8em;
+  margin-bottom: 0.1em;
+}
+
+/* line 98, ../_sass/app.sass */
+h2 {
+  font-size: 1.5em;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* line 102, ../_sass/app.sass */
+h3 {
+  font-size: 1.5em;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* line 106, ../_sass/app.sass */
+.call-out {
+  font-size: 3em;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-style: italic;
+}
+
+/* line 112, ../_sass/app.sass */
+.sign-up-form {
+  margin: 0 auto;
+  width: 400px;
+  margin-top: 5em;
+}
+/* line 116, ../_sass/app.sass */
+.sign-up-form .label {
+  margin-bottom: 5px;
+}
+/* line 118, ../_sass/app.sass */
+.sign-up-form .disclaimer {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 0.7em;
+  text-align: center;
+}
+
+/* line 122, ../_sass/app.sass */
+.emailfield {
+  width: 80%;
+  padding: 5% 10% 5% 10%;
+  border: 1px solid #ffea35;
+  margin: 0;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  font-size: 1em;
+  background: none;
+  color: #022329;
+}
+
+/* line 134, ../_sass/app.sass */
+.emailfield:focus {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-color: #ffea35;
+  outline-color: #ffea35;
+  color: whitesmoke;
+}
+
+/* line 139, ../_sass/app.sass */
+.button {
+  color: whitesmoke;
+  width: 80%;
+  padding: 5% 10% 5% 10%;
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+/* line 151, ../_sass/app.sass */
+.button-main {
+  color: #022329;
+  width: 100%;
+  padding: 5% 10% 5% 10%;
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 1em;
+  font-weight: 600;
+  background-color: #ffea35;
+  margin-top: 1em;
+  border: none;
+  cursor: pointer;
+  -webkit-box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  -moz-box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  text-shadow: 0 -1px 0 #ffed4f;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  border-radius: 4px;
+}
+
+/* line 170, ../_sass/app.sass */
+.button-main:hover {
+  background-color: #e8cf00;
+  text-shadow: 0 1px 0 #fff282;
+}
+
+/* line 173, ../_sass/app.sass */
+.button-main:active {
+  background-color: #e8cf00;
+}
+
+/* line 175, ../_sass/app.sass */
+.button-secondary {
+  margin-top: 1em;
+}
+
+/* line 177, ../_sass/app.sass */
+.button-secondary:hover {
+  margin-top: 1em;
+  color: #ffea35;
+}
+
+/* line 183, ../_sass/app.sass */
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* line 186, ../_sass/app.sass */
+.row {
+  padding-bottom: 100px;
+  padding-top: 100px;
+}
+
+/* line 190, ../_sass/app.sass */
+.video_header {
+  margin-bottom: 0px;
+}
+
+/* line 193, ../_sass/app.sass */
+.features {
+  color: #022329;
+  text-align: center;
+}
+
+/* line 197, ../_sass/app.sass */
+.how {
+  padding-top: 30px;
+  background: #ffea35;
+  color: whitesmoke;
+}
+
+/* line 202, ../_sass/app.sass */
+.area {
+  margin-bottom: 100px;
+}
+
+/* line 205, ../_sass/app.sass */
+.how_img {
+  margin-top: 80px;
+}
+
+/* line 207, ../_sass/app.sass */
+.how_video {
+  margin-top: 80px;
+  width: 50%;
+}
+
+/* line 210, ../_sass/app.sass */
+.video-note {
+  line-height: 50px;
+  vertical-align: middle;
+}
+/* line 213, ../_sass/app.sass */
+.video-note img {
+  height: 50px;
+  vertical-align: middle;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  border-radius: 100%;
+  margin-left: 1em;
+}
+/* line 218, ../_sass/app.sass */
+.video-note a {
+  text-decoration: none;
+  border-bottom: 1px solid #0cc6e8;
+}
+/* line 221, ../_sass/app.sass */
+.video-note a:hover {
+  border-bottom: 1px solid #099db8;
+  color: #099db8;
+  padding-bottom: 3px;
+}
+
+/* line 226, ../_sass/app.sass */
+footer {
+  text-align: center;
+  color: whitesmoke;
+  position: absolute;
+  bottom: 30px;
+  left: 40px;
+}
+/* line 233, ../_sass/app.sass */
+footer img {
+  height: 30px;
+}
+/* line 235, ../_sass/app.sass */
+footer .copy {
+  clear: all;
+  font-size: 0.6em;
+  text-align: left;
+}
+
+@media screen and (max-width: 1224px) {
+  /* line 243, ../_sass/app.sass */
+  h1 {
+    font-size: 3.5em;
+  }
+
+  /* line 245, ../_sass/app.sass */
+  h2 {
+    font-size: 1.2em;
+  }
+
+  /* line 247, ../_sass/app.sass */
+  h3 {
+    font-size: 1.2em;
+  }
+
+  /* line 249, ../_sass/app.sass */
+  .sign-up-form {
+    width: 300px;
+  }
+
+  /* line 251, ../_sass/app.sass */
+  .button-main {
+    font-size: 0.8em;
+  }
+}
+@media screen and (max-device-width: 1024px) {
+  /* line 255, ../_sass/app.sass */
+  body {
+    font-size: 12px;
+    width: 100%;
+  }
+
+  /* line 258, ../_sass/app.sass */
+  h1 {
+    font-size: 2em;
+  }
+
+  /* line 260, ../_sass/app.sass */
+  h2 {
+    font-size: 1em;
+  }
+
+  /* line 262, ../_sass/app.sass */
+  h3 {
+    font-size: 1.5em;
+  }
+
+  /* line 264, ../_sass/app.sass */
+  .video_header {
+    height: auto !important;
+  }
+
+  /* line 266, ../_sass/app.sass */
+  .video_container {
+    display: none;
+  }
+
+  /* line 268, ../_sass/app.sass */
+  .main_img {
+    height: 40px;
+    margin-top: 2em;
+  }
+
+  /* line 271, ../_sass/app.sass */
+  .sign-up-form {
+    width: 90%;
+    margin-top: 0em;
+  }
+  /* line 274, ../_sass/app.sass */
+  .sign-up-form .disclaimer {
+    font-size: 1em;
+  }
+
+  /* line 276, ../_sass/app.sass */
+  .how_video {
+    display: none;
+  }
+
+  /* line 278, ../_sass/app.sass */
+  footer {
+    color: whitesmoke;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    margin-left: 20px;
+  }
+}

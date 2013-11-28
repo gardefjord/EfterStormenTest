@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Efter Stormen</title>
+		<meta name="viewport" content="width=device-width">
+		<!--<meta property="fb:admins" content="696391333,586871825">
+		<meta property="og:url"content="http://funnle.io">
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="Funnle - Your time is important">
+		<meta property="og:image" content="http://funnle.io/images/logo_fb.jpg">
+		<meta property="og:description" content="The overflow of information starts the moment you wake up and ends when your sound asleep again. Bits and pieces of other peoples lives, marketing attempts from businesses, spambots and pictures of cats. This becomes a problem when the real important stuff gets lost. We think we can solve this. If you help us.">-->
+
+		<link rel="stylesheet" href="css/app.css">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+		<script src="js/main.js"></script>
+
+		<!-- Analytics kod -->
+		<script type="text/javascript">
+
+			var _gaq = _gaq || [];
+			_gaq.push(['_setAccount', 'UA-41186653-1']);
+			_gaq.push(['_trackPageview']);
+
+			(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			})();
+
+		</script>
+		<!-- Analytics kod -->
+
+	</head>
+	<body>
+		<div class="container">
+			<div class="video_header">
+				<!-- <header class="header container">
+					<h1 class="logo">Funnle</h1>
+				</header> -->
+
+				<div class="mission-statement">
+					<img class="main_img" src="img/radioaktivt_yellow.png">
+					<h1>Du befinner dig <span class="distance" id="distance"><span id="geoPos" >000</span> km</span> <br />från reaktor 2.</h1>
+					<h2>Tre historier. Tre författare. Samma katastrof.<br />2014 händer det som inte kunde hända.</h2>
+					
+					<p></p>
+				</div>
+				<div class="video video--has-button">
+					<div class="sign-up sign-up--on-video">
+
+						<div class="sign-up-form">
+							<form action="http://bonnierforlagen.createsend.com/t/t/s/jilddu/" method="post">
+								<br/> 
+								<label class="label" for="fieldEmail">Din e-post:</label>
+								<br />
+								<input tabindex="0" type="email" id="fieldEmail" placeholder="Din e-post" class="emailfield" name="cm-jilddu-jilddu" required>
+								<br/>
+								<input type="submit" value="Låt mig veta när larmet går" name="subscribe" class="button-main request">
+								<div id="mce-responses" class="clear">
+								<div class="response" id="mce-error-response" style="display:none"></div>
+								<div class="response" id="mce-success-response" style="display:none"></div>
+								<p class="disclaimer">Vi lämnar inte vidare din e-postadress till någon annan part.</p>
+							</form>
+							<!-- <a href="#learnmore" class="button button-secondary" id="learnMore_btn">Mer info</a> -->
+							
+						</div>
+					</div>
+					
+		 
+
+					<div class="video_container">
+						<video id="awesome_video" preload="auto" autoplay loop="loop">
+							<source src="movies/efter_stormen_original_mp4.mp4">
+							<source src="movies/efter_stormen_original_webmhd.webm">	
+						</video>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<footer class="footer">
+			<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.efterstormen.se&amp;width&amp;height=65&amp;colorscheme=light&amp;layout=box_count&amp;action=like&amp;show_faces=true&amp;send=false&amp;appId=574900192533136" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:65px;" allowTransparency="true"></iframe><br />
+			
+			<p class="copy"><img src="img/Mix_logo_vit.png"><br />&copy; Mix Förlag 2013</p>
+		</footer>
+<!--
+		<div class="features" id="scrollToLearnMore">
+			<div class="how row white-bg">
+				<div class="how area">
+					<h3><a name="learnmore"></a>H3</h3>
+					<h2 class="call-out">H2</h2>
+					<video class="how_video" autoplay loop>
+						<source src="movies/pick_link_SD.mp4">
+						<source src="movies/friends_links_SD.webm">
+					</video>
+				</div>
+
+			</div>
+			<div class="copy row">
+				<h1>H1</h1>
+			</div>
+			<div class="youtube_video row white-bg">
+				<iframe width="560" height="315" src="//www.youtube.com/embed/yE24B492kW4?&controls=0&showinfo=0" frameborder="0" allowfullscreen></iframe>
+			</div>
+			<footer class="footer row">
+				<h1>h1</h1>
+				<h2>H2</p>
+				
+				<p>&copy; Mix Förlag 2013</p>
+			</footer>
+		</div> -->
+
+</body>
+<script language="JavaScript" type="text/javascript" src="http://j.maxmind.com/app/geoip.js"></script>
+<script type="text/javascript">
+
+	
+
+	$(document).ready(function(){
+		setTimeout(function() {start_distance();}, 2000);
+	});
+	function start_distance(){
+		//
+		//Geoposition
+		//
+		//document.write(geoip_latitude());
+
+		//document.write(geoip_longitude());
+		/** Converts numeric degrees to radians */
+		
+		
+
+
+		var lat1 = 57.265699;
+		var lon1 = 16.447398;
+		var lat2 = geoip_latitude();
+		var lon2 = geoip_longitude();
+		
+
+
+		    var R = 3958.7558657440545; // Radius of earth in Miles 
+		    var dLat = toRad(lat2-lat1);
+		    var dLon = toRad(lon2-lon1); 
+		    var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+		            Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * 
+		            Math.sin(dLon/2) * Math.sin(dLon/2); 
+		    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+		    var distance = R * c;
+		    distance = distance.toFixed(0);
+
+			var x=document.getElementById("geoPos");
+
+			x.innerHTML= distance; 
+			
+		function toRad(Value) {
+		/** Converts numeric degrees to radians */
+			return Value * Math.PI / 180;
+			}
+		var y=document.getElementById("distance");
+			y.className = " distance_active";
+		}
+
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
