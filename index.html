@@ -18,18 +18,49 @@
         $(document).ready(function() {
             document.getElementById("result-wrap").style.display="none";
             var myArray = [];
+            var ans1Array = [];
+            var ans2Array = [];
+            var ans3Array = [];
+            var ans4Array = [];
 
             $( "#submit" ).click(function() {
                 $(".activeInput").each(function() {
-                    if($(this).prop('checked') == true && $(this).val() == '1'){
-                        myArray.push( "1" );
+                    if($(this).prop('checked')){
+                        if($(this).val() == 1){
+                            ans1Array.push( $(this).val() );
+                        }else if($(this).val() == 2){
+                            ans2Array.push( $(this).val() );
+                        }else if($(this).val() == 3){
+                            ans3Array.push( $(this).val() );
+                        }else if($(this).val() == 4){
+                            ans4Array.push( $(this).val() );
+                        }
+                        myArray.push( $(this).val() );
                     }
                 });
+
+                var NumberOfAns1 = ans1Array.length;
+                var NumberOfAns2 = ans2Array.length;
+                var NumberOfAns3 = ans3Array.length;
+                var NumberOfAns4 = ans4Array.length;
+
+                if(NumberOfAns1 >= NumberOfAns2 && NumberOfAns1 >= NumberOfAns3 && NumberOfAns1 >= NumberOfAns4) {
+                    window.location.replace("file:///Users/adga/code/EfterStormenTest/result1.html");
+                } else if (NumberOfAns2 >= NumberOfAns1 && NumberOfAns2 >= NumberOfAns3 && NumberOfAns2 >= NumberOfAns4) {
+                    window.location.replace("file:///Users/adga/code/EfterStormenTest/result2.html");
+                } else if (NumberOfAns3 >= NumberOfAns1 && NumberOfAns3 >= NumberOfAns2 && NumberOfAns3 >= NumberOfAns4) {
+                    window.location.replace("file:///Users/adga/code/EfterStormenTest/result3.html");
+                } else {
+                    window.location.replace("file:///Users/adga/code/EfterStormenTest/result4.html");
+                }
+                
+
+
                 if(myArray.length == 2){
                     document.getElementById("quiz").style.display="none";
                     document.getElementById("result-wrap").style.display="block";
                     $( ".result" ).append( "<p>Två ja</p>" );
-                    window.location.replace("file:///Users/adga/code/EfterStormenTest/result1.html");
+                    
                 }else if (myArray.length == 1){
                     document.getElementById("quiz").style.display="none";;
                     document.getElementById("result-wrap").style.display="block";
@@ -63,27 +94,80 @@
                     <h3>Fråga 1</h3>
 
                     <div>
-                        <input type="radio" name="ans1" id="ans01" class="activeInput" value="1" />
-                        <label for="ans01">Ja</label>
+                        <input type="radio" name="ans1" id="ans11" class="activeInput" value="1" />
+                        <label for="ans11">1</label>
                     </div>
                     <div>
-                        <input type="radio" name="ans1" id="ans02" class="activeInput" value="0" />
-                        <label for="ans02">Nej</label>
+                        <input type="radio" name="ans1" id="ans12" class="activeInput" value="2" />
+                        <label for="ans12">2</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans1" id="ans13" class="activeInput" value="3" />
+                        <label for="ans13">3</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans1" id="ans14" class="activeInput" value="4" />
+                        <label for="ans14">4</label>
                     </div>
                 </li>
                 
                 <li>
                     <h3>Fråga 2</h3>
                     <div>
-                        <input type="radio" name="ans2" id="ans11" class="activeInput" value="1" />
-                        <label for="ans11">Ja</label>
+                        <input type="radio" name="ans2" id="ans21" class="activeInput" value="1" />
+                        <label for="ans21">1</label>
                     </div>
                     <div>
-                        <input type="radio" name="ans2" id="ans12" class="activeInput" value="0" />
-                        <label for="ans12">Nej</label>
+                        <input type="radio" name="ans2" id="ans22" class="activeInput" value="2" />
+                        <label for="ans22">2</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans2" id="ans23" class="activeInput" value="3" />
+                        <label for="ans23">3</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans2" id="ans24" class="activeInput" value="4" />
+                        <label for="ans24">4</label>
                     </div>
                 </li>
-            
+                <li>
+                    <h3>Fråga 3</h3>
+                    <div>
+                        <input type="radio" name="ans3" id="ans31" class="activeInput" value="1" />
+                        <label for="ans31">1</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans3" id="ans32" class="activeInput" value="2" />
+                        <label for="ans32">2</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans3" id="ans33" class="activeInput" value="3" />
+                        <label for="ans33">3</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans3" id="ans34" class="activeInput" value="4" />
+                        <label for="ans34">4</label>
+                    </div>
+                </li>
+                <li>
+                    <h3>Fråga 4</h3>
+                    <div>
+                        <input type="radio" name="ans4" id="ans41" class="activeInput" value="1" />
+                        <label for="ans41">1</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans4" id="ans42" class="activeInput" value="2" />
+                        <label for="ans42">2</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans4" id="ans43" class="activeInput" value="3" />
+                        <label for="ans43">3</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans4" id="ans44" class="activeInput" value="4" />
+                        <label for="ans44">4</label>
+                    </div>
+                </li>
             </ol>
             
             <a href="#" id="submit">Se resultat</a>
