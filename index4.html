@@ -1,0 +1,449 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<title>Test Efter Stormen</title>
+	
+	<!--<li class="question"nk rel="stylesheet" type="text/css" href="css/style.css" />-->
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+
+
+            var myAnswers = [];
+            //var myQuestions = [];
+            var total = 0;
+            var v;
+            // var ans1Array = [];
+            // var ans2Array = [];
+            // var ans3Array = [];
+            // var ans4Array = [];
+            // var ans5Array = [];
+            // $(".question").each(function() {
+            //     myQuestions.push($(this));
+
+            // });
+            
+            $(document).ready (function() {
+                $('.question').hide();
+                var i = 0;
+                $('.activeInput').each(function(){
+                    $(this).click(function(){ 
+                        $('.question:eq('+$(this).data('idf')+')').toggle('slow');
+                    });
+                    $(this).data('idf',i);
+                    i++;
+                });
+            });
+
+            // var myQuestions = document.getElementsByClassName('question');
+
+            // for(var i = 1; i < myQuestions.length; i = i + 1) {
+                
+            //     myQuestions[0].style.display='block';   
+
+            //     $( '.activeInput' ).click(function() {
+            //         myQuestions[i].style.display='block';
+                    
+            //     });
+            // }
+
+            $( '#submit' ).click(function() {
+                $('.activeInput').each(function() {
+
+                    if($(this).prop('checked')){
+                        myAnswers.push( $(this).val() );
+                    }
+                }); 
+                if(myAnswers.length == 11){
+                    for(var i = 0; i < myAnswers.length; i++) {
+                        v = parseFloat(myAnswers[i]);
+                        if (!isNaN(v)) total += v; 
+                    } 
+
+                
+                    alert(total);
+                    if((total <= 11)) {
+                        window.location.replace("file:///Users/adga/code/EfterStormenTest/result1.html");
+                    } else if ((12 >= total) && (total <= 16)) {
+                        window.location.replace("file:///Users/adga/code/EfterStormenTest/result2.html");
+                    } else if ((17 >= total) && (total <= 21)) {
+                        window.location.replace("file:///Users/adga/code/EfterStormenTest/result3.html");
+                    } else if((22 >= total) && (total <= 26)){
+                        window.location.replace("file:///Users/adga/code/EfterStormenTest/result4.html");
+                    } else if((27 >= total) && (total <= 31)){
+                        window.location.replace("file:///Users/adga/code/EfterStormenTest/result5.html");
+                    } else if((32 >= total) && (total <= 36)){
+                        window.location.replace("file:///Users/adga/code/EfterStormenTest/result6.html");
+                    } else if((37 >= total) && (total <= 41)){
+                        window.location.replace("file:///Users/adga/code/EfterStormenTest/result7.html");
+                    } else if((42 >= total) && (total <= 47)){
+                        window.location.replace("file:///Users/adga/code/EfterStormenTest/result8.html");
+                    } else if((48 >= total) && (total <= 51)){
+                        window.location.replace("file:///Users/adga/code/EfterStormenTest/result9.html");
+                    } else {
+                        window.location.replace("file:///Users/adga/code/EfterStormenTest/result10.html");
+                    }
+                } else{
+                    alert("Du måste svara på alla frågor");
+                }
+            });
+            
+        });
+            // $( "#submit" ).click(function() {
+            //     $(".activeInput").each(function() {
+            //         if($(this).prop('checked')){
+            //             if($(this).val() == 1){
+            //                 ans1Array.push( $(this).val() );
+            //             }else if($(this).val() == 2){
+            //                 ans2Array.push( $(this).val() );
+            //             }else if($(this).val() == 3){
+            //                 ans3Array.push( $(this).val() );
+            //             }else if($(this).val() == 4){
+            //                 ans4Array.push( $(this).val() );
+            //             }else if($(this).val() == 5){
+            //                 ans4Array.push( $(this).val() );
+            //             }
+            //             myArray.push( $(this).val() );
+            //         }
+            //     });
+
+            //     var NumberOfAns1 = ans1Array.length;
+            //     var NumberOfAns2 = ans2Array.length;
+            //     var NumberOfAns3 = ans3Array.length;
+            //     var NumberOfAns4 = ans4Array.length;
+            //     var NumberOfAns4 = ans4Array.length;
+
+                // if(NumberOfAns1 >= NumberOfAns2 && NumberOfAns1 >= NumberOfAns3 && NumberOfAns1 >= NumberOfAns4 && NumberOfAns1 >= NumberOfAns5) {
+                //     window.location.replace("file:///Users/adga/code/EfterStormenTest/result1.html");
+                // } else if (NumberOfAns2 >= NumberOfAns1 && NumberOfAns2 >= NumberOfAns3 && NumberOfAns2 >= NumberOfAns4 && NumberOfAns2 >= NumberOfAns5) {
+                //     window.location.replace("file:///Users/adga/code/EfterStormenTest/result2.html");
+                // } else if (NumberOfAns3 >= NumberOfAns1 && NumberOfAns3 >= NumberOfAns2 && NumberOfAns3 >= NumberOfAns4 && NumberOfAns3 >= NumberOfAns5) {
+                //     window.location.replace("file:///Users/adga/code/EfterStormenTest/result3.html");
+                // } else if(NumberOfAns4 >= NumberOfAns1 && NumberOfAns4 >= NumberOfAns2 && NumberOfAns4 >= NumberOfAns3 && NumberOfAns14 >= NumberOfAns5){
+                //     window.location.replace("file:///Users/adga/code/EfterStormenTest/result4.html");
+                // } else {
+                //     window.location.replace("file:///Users/adga/code/EfterStormenTest/result5.html");
+                // }
+                
+
+
+            //     if(myArray.length == 2){
+            //         document.getElementById("quiz").style.display="none";
+            //         document.getElementById("result-wrap").style.display="block";
+            //         $( ".result" ).append( "<p>Två ja</p>" );
+                    
+            //     }else if (myArray.length == 1){
+            //         document.getElementById("quiz").style.display="none";;
+            //         document.getElementById("result-wrap").style.display="block";
+            //         $( ".result" ).append( "<p>Ett ja</p>" );
+            //     }else if (myArray.length == 0){
+            //         document.getElementById("quiz").style.display="none";;
+            //         document.getElementById("result-wrap").style.display="block";
+            //         $( ".result" ).append( "<p>Inget ja</p>" );
+            //     }
+            // });
+
+            
+            
+        
+
+    </script>
+</head>
+
+<body>
+
+</div>
+	<div id="page-wrap">
+
+		<h1>Efter Stormen – Test</h1>
+		
+		<form method="post" id="quiz">
+		
+            <ol>
+            
+                <li class="question">
+                    <h3>Har du varit med om någon form av naturkatastrof?</h3>
+
+                    <div>
+                        <input type="radio" name="ans1" id="ans11" class="activeInput" value="5" />
+                        <label for="ans11">A.   Ja, en svensk – storm eller liknande.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans1" id="ans12" class="activeInput" value="2" />
+                        <label for="ans12">B.   Ja, en internationell – tsunami eller liknande</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans1" id="ans13" class="activeInput" value="4" />
+                        <label for="ans13">C.   Ja. Jag försöker ofta ta mig till katastrofområden i världen för att hjälpa till.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans1" id="ans14" class="activeInput" value="3" />
+                        <label for="ans14">D.   Nej, men jag har gjort lumpen och/eller varit med i scouterna, så jag har visst hum om vad man ska göra i krislägen.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans1" id="ans15" class="activeInput" value="1" />
+                        <label for="ans15">E.   Nej.</label>
+                    </div>
+                </li>
+                
+                <li class="question">
+                    <h3>Har du körkort?</h3>
+                    <div>
+                        <input type="radio" name="ans2" id="ans21" class="activeInput" value="5" />
+                        <label for="ans21">A.   Ja, både körkort och bil.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans2" id="ans22" class="activeInput" value="2" />
+                        <label for="ans22">B.   Ja, körkort men ingen bil.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans2" id="ans23" class="activeInput" value="3" />
+                        <label for="ans23">C.   Nej.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans2" id="ans24" class="activeInput" value="4" />
+                        <label for="ans24">D.   Nej, men jag har bil och kör ändå.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans2" id="ans25" class="activeInput" value="1" />
+                        <label for="ans25">E.   Nej, jag cyklar överallt.</label>
+                    </div>
+                </li>
+                <li class="question">
+                    <h3>Vilken bild liknar ditt skafferi mest?</h3>
+                    <div>
+                        <input type="radio" name="ans3" id="ans31" class="activeInput" value="1" />
+                        <label for="ans31">A.   "Bild på ketchupflaska och några potatisar med långa groddar på"</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans3" id="ans32" class="activeInput" value="4" />
+                        <label for="ans32">B.   "Bild på ”normalt” skafferi – kanske spaghetti, makaroner, någon konserv med krossade tomater plus lite godis."</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans3" id="ans33" class="activeInput" value="2" />
+                        <label for="ans33">C.   "Bild på lägenhetsstylingskafferi – dvs enbart färska saker i tjusiga färger – kryddväxter, frukter, färska tomater etc."</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans3" id="ans34" class="activeInput" value="3" />
+                        <label for="ans34">D.   "Bild på ekoskafferi – ”Linas matkasse” och frukt och grönsaker från Bondens marknad."</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans3" id="ans35" class="activeInput" value="5" />
+                        <label for="ans35">E.   "Bild på Survivalskafferiet – knökfullt med olika konservburkar, frystorkad mat, powerbars, torrmjölk, bönpåsar etc." </label>
+                    </div>
+                </li>
+                <li class="question">
+                    <h3>Du befinner dig utomhus. Klockan är tolv och det är söndag och. Plötsligt får du höra larmsignalen ”viktigt meddelande till allmänheten”. Vad gör du?</h3>
+                    <div>
+                        <input type="radio" name="ans4" id="ans41" class="activeInput" value="5" />
+                        <label for="ans41">A.   Skyndar mig in och ser till att lyssna till vidare instruktioner på radion.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans4" id="ans42" class="activeInput" value="4" />
+                        <label for="ans42">B.   Drar igång en Facebookgrupp där frivilliga kan anmäla sig att hjälpa till – vad det nu är som har hänt.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans4" id="ans43" class="activeInput" value="3" />
+                        <label for="ans43">C.   Skyndar mig in och söker på Flashback forum om vad som egentligen har hänt och som myndigheterna troligen mörkar.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans4" id="ans44" class="activeInput" value="2" />
+                        <label for="ans44">D.   Grips av panik och irrar runt en stund.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans4" id="ans45" class="activeInput" value="1" />
+                        <label for="ans45">E.   Tar för givet att det bara är ett test och fortsätter med det jag höll på med.</label>
+                    </div>
+                </li>
+                <li class="question">
+                    <h3>Du har nu fått veta att det inträffat en kärnkraftolycka och att ditt område drabbats av radioaktivt nedfall. Alla ombeds att hålla sig inomhus. Vad gör du? </h3>
+                    <div>
+                        <input type="radio" name="ans5" id="ans51" class="activeInput" value="5" />
+                        <label for="ans51">A.   Barrikaderar mig i hemmet, och täpper till alla fönster och dörrspringor.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans5" id="ans52" class="activeInput" value="4" />
+                        <label for="ans52">B.   Stannar inne och youtubar klipp på festliga katter för att få tiden att gå.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans5" id="ans53" class="activeInput" value="2" />
+                        <label for="ans53">C.   Åker iväg för att samla ihop mina nära och kära.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans5" id="ans54" class="activeInput" value="3" />
+                        <label for="ans54">D.   Tar mig till närmsta centrum och samlar på mig mat, medicin och andra förnödenheter. Kanske några iPads och smycken slinker med också, nu när polisen har fullt upp med annat.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans5" id="ans55" class="activeInput" value="1" />
+                        <label for="ans55">E.   Samlar ihop en grupp frivilliga och beger mig till kärnkraftverket för att se hur jag bäst kan hjälpa till.</label>
+                    </div>
+                </li>
+                <li class="question">
+                    <h3>Plötsligt blir det strömavbrott. Hur reagerar du?</h3>
+                    <div>
+                        <input type="radio" name="ans6" id="ans61" class="activeInput" value="5" />
+                        <label for="ans61">A.   Jag klär mig varmt, letar reda på trangiakök, dynamoapparater och ficklampor, samt samlar ihop alla batterier jag kan hitta.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans6" id="ans62" class="activeInput" value="3" />
+                        <label for="ans62">B.   Jag fortsätter att youtuba katter tills batteriet i min mobil tar slut.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans6" id="ans63" class="activeInput" value="2" />
+                        <label for="ans63">C.   Jag samlar på mig brännbart material och gör en brasa i vardagsrummet. På så sätt får jag både värme och ljus och kan samtidigt grilla korv.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans6" id="ans64" class="activeInput" value="1" />
+                        <label for="ans64">D.   Jag bygger en egen kärnkraftsreaktor i källaren enligt anvisningar från Flashback forum.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans6" id="ans65" class="activeInput" value="4" />
+                        <label for="ans65">E.   Det är bara bra att elförbrukningen går ner! Jag tänder ljus och bjuder hem mina grannar.</label>
+                    </div>
+                </li>
+                <li class="question">
+                    <h3>Nu går larmet igen. På radion meddelar man att ditt område måste evakueras. Allmänheten uppmanas att omedelbart bege sig till närmsta uppsamlingsplats. Vad gör du?</h3>
+                    <div>
+                        <input type="radio" name="ans7" id="ans71" class="activeInput" value="2" />
+                        <label for="ans71">A.   Stannar kvar för att försvara mitt hem från plundrare.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans7" id="ans72" class="activeInput" value="3" />
+                        <label for="ans72">B.   Går runt och knackar dörr för att försäkra mig om att inte någon gammal eller sjuk råkar bli kvarlämnad.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans7" id="ans73" class="activeInput" value="1" />
+                        <label for="ans73">C.   Beger mig till det som sägs vara katastrofområdet för att ta reda på sanningen om vad som egentligen har hänt.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans7" id="ans74" class="activeInput" value="5" />
+                        <label for="ans74">D.   Tar mig till uppsamlingsplatsen så fort som möjligt.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans7" id="ans75" class="activeInput" value="4" />
+                        <label for="ans75">E.   Packar en väska med saker jag tror att jag kan behöva eller inte kan skiljas från och beger mig sedan till uppsamlingsplatsen.</label>
+                    </div>
+                </li>
+                <li class="question">
+                    <h3>I samband med evakueringen börjar plundrare göra inbrott. Hur förhåller du dig till det?</h3>
+                    <div>
+                        <input type="radio" name="ans8" id="ans81" class="activeInput" value="1" />
+                        <label for="ans81">A.   Jag tänker inte lämna mitt hem – jag stannar och försvarar det som är mitt!</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans8" id="ans82" class="activeInput" value="5" />
+                        <label for="ans82">B.   Prylar känns oviktiga i det här läget, jag lämnar allt och beger mig till uppsamlingsplatsen.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans8" id="ans83" class="activeInput" value="4" />
+                        <label for="ans83">C.   Jag tar med mig så mycket jag kan av mina dyraste prylar, samt saker med högt affektionsvärde.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans8" id="ans84" class="activeInput" value="2" />
+                        <label for="ans84">D.   Jag dröjer mig kvar för att försöka övertyga plundrarna om att bege sig till uppsamlingsplatsen istället.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans8" id="ans85" class="activeInput" value="3" />
+                        <label for="ans85">E.   Eftersom polisen är upptagen med annat passar jag på att ta en omväg via centrum för att plocka med mig lite saker innan jag beger mig till uppsamlingsplatsen.</label>
+                    </div>
+                </li>
+                <li class="question">
+                    <h3>Vägen mot uppsamlingsplatsen har blivit fullständigt igentäppt och det är omöjligt att ta sig vidare i bil eller buss. Inte heller går det att vända och åka tillbaka. Vad gör du?</h3>
+                    <div>
+                        <input type="radio" name="ans9" id="ans91" class="activeInput" value="2" />
+                        <label for="ans91">A.   Skiter väl jag i – jag är kvar hemma.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans9" id="ans92" class="activeInput" value="3" />
+                        <label for="ans92">B.   Försöker ta mig fram till fots eller med cykel istället.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans9" id="ans93" class="activeInput" value="5" />
+                        <label for="ans93">C.   Stannar i bilen och hoppas på att någon myndighet ska ta tag i situationen.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans9" id="ans94" class="activeInput" value="1" />
+                        <label for="ans94">D.   Drar igång en Facebookgrupp för att så snabbt som möjligt fixa fram cyklar till alla i bilkön.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans9" id="ans95" class="activeInput" value="4" />
+                        <label for="ans95">E.   Tar hjälp av andra resenärer för att åtgärda problemet längst fram i bilkön.</label>
+                    </div>
+                </li>
+                <li class="question">
+                    <h3>På väg mot uppsamlingsplatsen behöver du gå ur bilen/bussen och kissa. Du snubblar och får lera på byxorna, lera som med största sannolikhet innehåller radioaktivt nedfall. Vad gör du?</h3>
+                    <div>
+                        <input type="radio" name="ans10" id="ans101" class="activeInput" value="2" />
+                        <label for="ans101">A.  Känner att jag omedelbart börjar må illa, får panik och skyndar mig tillbaka till mina anhöriga för att söka tröst och skydd.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans10" id="ans102" class="activeInput" value="3" />
+                        <label for="ans102">B.  Fattar att nu är det kört för min del, springer därför ut i skogen för att dö.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans10" id="ans103" class="activeInput" value="1" />
+                        <label for="ans103">C.  Letar rätt på närmsta vattenpöl och försöker tvätta bort leran.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans10" id="ans104" class="activeInput" value="5" />
+                        <label for="ans104">D.  Tar av mig byxorna och lämnar kvar dem på platsen.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans10" id="ans105" class="activeInput" value="4" />
+                        <label for="ans105">E.  Låtsas som ingenting och går tillbaka till de andra.</label>
+                    </div>
+                </li>
+                <li class="question">
+                    <h3>Det har gått tre månader sedan katastrofen. Hur ser ditt liv ut?</h3>
+                    <div>
+                        <input type="radio" name="ans11" id="ans111" class="activeInput" value="4" />
+                        <label for="ans111">A.  Jag har accepterat att jag inte kommer att kunna flytta tillbaka och börjar vänja mig vid livet i mitt nya hem.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans11" id="ans112" class="activeInput" value="5" />
+                        <label for="ans112">B.  Jag har ingen aning om var jag bor – men jag vet att jag använder mina erfarenheter från det här till att hjälpa och stötta andra.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans11" id="ans113" class="activeInput" value="1" />
+                        <label for="ans113">C.  Jag bor fortfarande kvar, jag tror att riskerna är överdrivna, än har jag ju inte dött.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans11" id="ans114" class="activeInput" value="3" />
+                        <label for="ans114">D.  Jag har lämnat allt bakom mig och flyttat till andra sidan jorden.</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="ans11" id="ans115" class="activeInput" value="2" />
+                        <label for="ans115">E.  Jag har flyttat till en ny plats men är djupt deprimerad över allt jag har förlorat.</label>
+                    </div>
+                </li>
+            </ol>
+                <div>
+                    <a href="#" id="submit" class="button submit">Se resultat</a>
+                </div>
+		</form>
+
+	   <div id="result-wrap">
+        <h3 class="result"></h3>
+
+       </div>
+	</div>
+<!--Result 
+$(".activeInput").each(function() {
+    if($(this).prop('checked') == true && $(this).val() == '1'){
+        myArray.push( "1" );
+    }
+});
+redirect-->
+
+
+<script type="text/javascript">
+	var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-68528-29']); _gaq.push(['_trackPageview']); (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga); })();
+</script>
+</body>
+
+</html>

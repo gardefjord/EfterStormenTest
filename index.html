@@ -1,196 +1,448 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<!DOCTYPE html>
+<html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<style type="text/css">
-    .red{
-        color: red;
-    }
-
-    </style>
-	<title>Test Efter Stormen</title>
-	
-	<!--<link rel="stylesheet" type="text/css" href="css/style.css" />-->
+    <meta charset="utf-8">
+    <title>Quiz</title>
+    <meta name="viewport" content="width=device-width">
+    <!-- jquery for maximum compatibility -->
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            document.getElementById("result-wrap").style.display="none";
-            var myArray = [];
-            var ans1Array = [];
-            var ans2Array = [];
-            var ans3Array = [];
-            var ans4Array = [];
+    <script>
+    /** Simple JavaScript Quiz
+     * version 0.1.0
+     * http://journalism.berkeley.edu
+     * created by: Jeremy Rue @jrue
+     *
+     * Copyright (c) 2013 The Regents of the University of California
+     * Released under the GPL Version 2 license
+     * http://www.opensource.org/licenses/gpl-2.0.php
+     * This program is distributed in the hope that it will be useful, but
+     * WITHOUT ANY WARRANTY; without even the implied warranty of
+     * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+     */
 
-            $( "#submit" ).click(function() {
-                $(".activeInput").each(function() {
-                    if($(this).prop('checked')){
-                        if($(this).val() == 1){
-                            ans1Array.push( $(this).val() );
-                        }else if($(this).val() == 2){
-                            ans2Array.push( $(this).val() );
-                        }else if($(this).val() == 3){
-                            ans3Array.push( $(this).val() );
-                        }else if($(this).val() == 4){
-                            ans4Array.push( $(this).val() );
-                        }
-                        myArray.push( $(this).val() );
-                    }
-                });
+    var quiztitle = "Test";
 
-                var NumberOfAns1 = ans1Array.length;
-                var NumberOfAns2 = ans2Array.length;
-                var NumberOfAns3 = ans3Array.length;
-                var NumberOfAns4 = ans4Array.length;
+    /**
+    * Set the information about your questions here. The correct answer string needs to match
+    * the correct choice exactly, as it does string matching. (case sensitive)
+    *
+    */
+    var quiz = [
+        {
+            "question"      :   "1. Har du varit med om någon form av naturkatastrof?",
+            "image"         :   "",
+            "choices"       :   [
+                                    "A. Ja, en svensk – storm eller liknande.",
+                                    "B. Ja, en internationell – tsunami eller liknande. ",
+                                    "C. Ja. Jag försöker ofta ta mig till katastrofområden i världen för att hjälpa till. ",
+                                    "D. Nej, men jag har gjort lumpen och/eller varit med i scouterna, så jag har visst hum om vad man ska göra i krislägen.",
+                                    "E. Nej. "
+                                ],
+            "correct"       :   [
+                                    "5",
+                                    "2",
+                                    "4",
+                                    "3",
+                                    "1",
+                                ],
+            "explanation"   :   "Albert Einstein drafted the special theory of relativity in 1905.",
+        },
+        {
+            "question"      :   "2. Har du körkort?",
+            "image"         :   "",
+            "choices"       :   [
+                                    "A. Ja, både körkort och bil. ",
+                                    "B. Ja, körkort men ingen bil.",
+                                    "C. Nej.",
+                                    "D. Nej, men jag har bil och kör ändå.",
+                                    "E. Nej, jag cyklar överallt."
+                                ],
 
-                if(NumberOfAns1 >= NumberOfAns2 && NumberOfAns1 >= NumberOfAns3 && NumberOfAns1 >= NumberOfAns4) {
-                    window.location.replace("file:///Users/adga/code/EfterStormenTest/result1.html");
-                } else if (NumberOfAns2 >= NumberOfAns1 && NumberOfAns2 >= NumberOfAns3 && NumberOfAns2 >= NumberOfAns4) {
-                    window.location.replace("file:///Users/adga/code/EfterStormenTest/result2.html");
-                } else if (NumberOfAns3 >= NumberOfAns1 && NumberOfAns3 >= NumberOfAns2 && NumberOfAns3 >= NumberOfAns4) {
-                    window.location.replace("file:///Users/adga/code/EfterStormenTest/result3.html");
+            "correct"       :   [
+                                    "5",
+                                    "2",
+                                    "3",
+                                    "4",
+                                    "1",
+                                ],
+            "explanation"   :   "Albert Einstein drafted the special theory of relativity in 1905.",
+        },
+        {
+            "question"      :   "3. Vilken bild liknar ditt skafferi mest?",
+            "image"         :   "",
+            "choices"       :   [
+                                    "A. <Bild på ketchupflaska och några potatisar med långa groddar på> ",
+                                    "B. <Bild på ”normalt” skafferi – kanske spaghetti, makaroner, någon konserv med krossade tomater plus lite godis.> ",
+                                    "C. <Bild på lägenhetsstylingskafferi – dvs enbart färska saker i tjusiga färger – kryddväxter, frukter, färska tomater etc.> ",
+                                    "D. <Bild på ekoskafferi – ”Linas matkasse” och frukt och grönsaker från Bondens marknad.>",
+                                    "E. <Bild på Survivalskafferiet – knökfullt med olika konservburkar, frystorkad mat, powerbars, torrmjölk, bönpåsar etc.> "
+                                ],
+
+            "correct"       :   [
+                                    "1",
+                                    "4",
+                                    "2",
+                                    "3",
+                                    "5",
+                                ],
+            "explanation"   :   "Albert Einstein drafted the special theory of relativity in 1905.",
+        },
+        {
+            "question"      :   "4. Du befinner dig utomhus. Klockan är tolv och det är söndag och. Plötsligt får du höra larmsignalen ”viktigt meddelande till allmänheten”. Vad gör du?",
+            "image"         :   "",
+            "choices"       :   [
+                                    "A. Skyndar mig in och ser till att lyssna till vidare instruktioner på radion. ",
+                                    "B. Drar igång en Facebookgrupp där frivilliga kan anmäla sig att hjälpa till – vad det nu är som har hänt. ",
+                                    "C. Skyndar mig in och söker på Flashback forum om vad som egentligen har hänt och som myndigheterna troligen mörkar. ",
+                                    "D. Grips av panik och irrar runt en stund. ",
+                                    "E. Tar för givet att det bara är ett test och fortsätter med det jag höll på med. "
+                                ],
+
+            "correct"       :   [
+                                    "5",
+                                    "4",
+                                    "3",
+                                    "2",
+                                    "1",
+                                ],
+            "explanation"   :   "Albert Einstein drafted the special theory of relativity in 1905.",
+        },
+        {
+            "question"      :   "5. Du har nu fått veta att det inträffat en kärnkraftolycka och att ditt område drabbats av radioaktivt nedfall. Alla ombeds att hålla sig inomhus. Vad gör du? ",
+            "image"         :   "",
+            "choices"       :   [
+                                    "A. Barrikaderar mig i hemmet, och täpper till alla fönster och dörrspringor. ",
+                                    "B. Stannar inne och youtubar klipp på festliga katter för att få tiden att gå. ",
+                                    "C. Åker iväg för att samla ihop mina nära och kära. ",
+                                    "D. Tar mig till närmsta centrum och samlar på mig mat, medicin och andra förnödenheter. Kanske några iPads och smycken slinker med också, nu när polisen har fullt upp med annat. ",
+                                    "E. Samlar ihop en grupp frivilliga och beger mig till kärnkraftverket för att se hur jag bäst kan hjälpa till. "
+                                ],
+
+            "correct"       :   [
+                                    "5",
+                                    "4",
+                                    "2",
+                                    "3",
+                                    "1",
+                                ],
+            "explanation"   :   "Albert Einstein drafted the special theory of relativity in 1905.",
+        },
+        {
+            "question"      :   "6. Plötsligt blir det strömavbrott. Hur reagerar du?",
+            "image"         :   "",
+            "choices"       :   [
+                                    "A. Jag klär mig varmt, letar reda på trangiakök, dynamoapparater och ficklampor, samt samlar ihop alla batterier jag kan hitta. ",
+                                    "B. Jag fortsätter att youtuba katter tills batteriet i min mobil tar slut. ",
+                                    "C. Jag samlar på mig brännbart material och gör en brasa i vardagsrummet. På så sätt får jag både värme och ljus och kan samtidigt grilla korv. ",
+                                    "D. Jag bygger en egen kärnkraftsreaktor i källaren enligt anvisningar från Flashback forum. ",
+                                    "E. Det är bara bra att elförbrukningen går ner! Jag tänder ljus och bjuder hem mina grannar. "
+                                ],
+
+            "correct"       :   [
+                                    "5",
+                                    "3",
+                                    "2",
+                                    "1",
+                                    "4",
+                                ],
+            "explanation"   :   "Albert Einstein drafted the special theory of relativity in 1905.",
+        },
+        {
+            "question"      :   "7. Nu går larmet igen. På radion meddelar man att ditt område måste evakueras. Allmänheten uppmanas att omedelbart bege sig till närmsta uppsamlingsplats. Vad gör du?",
+            "image"         :   "",
+            "choices"       :   [
+                                    "A. Stannar kvar för att försvara mitt hem från plundrare. ",
+                                    "B. Går runt och knackar dörr för att försäkra mig om att inte någon gammal eller sjuk råkar bli kvarlämnad. ",
+                                    "C. Beger mig till det som sägs vara katastrofområdet för att ta reda på sanningen om vad som egentligen har hänt. ",
+                                    "D. Tar mig till uppsamlingsplatsen så fort som möjligt. ",
+                                    "E. Packar en väska med saker jag tror att jag kan behöva eller inte kan skiljas från och beger mig sedan till uppsamlingsplatsen. "
+                                ],
+
+            "correct"       :   [
+                                    "2",
+                                    "3",
+                                    "1",
+                                    "4",
+                                    "5",
+                                ],
+            "explanation"   :   "Albert Einstein drafted the special theory of relativity in 1905.",
+        },
+        {
+            "question"      :   "8. I samband med evakueringen börjar plundrare göra inbrott. Hur förhåller du dig till det?",
+            "image"         :   "",
+            "choices"       :   [
+                                    "A. Jag tänker inte lämna mitt hem – jag stannar och försvarar det som är mitt! ",
+                                    "B. Prylar känns oviktiga i det här läget, jag lämnar allt och beger mig till uppsamlingsplatsen. ",
+                                    "C. Jag tar med mig så mycket jag kan av mina dyraste prylar, samt saker med högt affektionsvärde. ",
+                                    "D. Jag dröjer mig kvar för att försöka övertyga plundrarna om att bege sig till uppsamlingsplatsen istället. ",
+                                    "E. Eftersom polisen är upptagen med annat passar jag på att ta en omväg via centrum för att plocka med mig lite saker innan jag beger mig till uppsamlingsplatsen. "
+                                ],
+
+            "correct"       :   [
+                                    "1",
+                                    "5",
+                                    "4",
+                                    "2",
+                                    "3",
+                                ],
+            "explanation"   :   "Albert Einstein drafted the special theory of relativity in 1905.",
+        },
+        {
+            "question"      :   "9. Vägen mot uppsamlingsplatsen har blivit fullständigt igentäppt och det är omöjligt att ta sig vidare i bil eller buss. Inte heller går det att vända och åka tillbaka. Vad gör du?",
+            "image"         :   "",
+            "choices"       :   [
+                                    "A. Skiter väl jag i – jag är kvar hemma. ",
+                                    "B. Försöker ta mig fram till fots eller med cykel istället. ",
+                                    "C. Stannar i bilen och hoppas på att någon myndighet ska ta tag i situationen. ",
+                                    "D. Drar igång en Facebookgrupp för att så snabbt som möjligt fixa fram cyklar till alla i bilkön. ",
+                                    "E. Tar hjälp av andra resenärer för att åtgärda problemet längst fram i bilkön. "
+                                ],
+
+            "correct"       :   [
+                                    "2",
+                                    "3",
+                                    "5",
+                                    "1",
+                                    "4",
+                                ],
+            "explanation"   :   "Albert Einstein drafted the special theory of relativity in 1905.",
+        },
+        {
+            "question"      :   "10. På väg mot uppsamlingsplatsen behöver du gå ur bilen/bussen och kissa. Du snubblar och får lera på byxorna, lera som med största sannolikhet innehåller radioaktivt nedfall. Vad gör du?",
+            "image"         :   "",
+            "choices"       :   [
+                                    "A. Känner att jag omedelbart börjar må illa, får panik och skyndar mig tillbaka till mina anhöriga för att söka tröst och skydd. ",
+                                    "B. Fattar att nu är det kört för min del, springer därför ut i skogen för att dö.",
+                                    "C. Letar rätt på närmsta vattenpöl och försöker tvätta bort leran. ",
+                                    "D. Tar av mig byxorna och lämnar kvar dem på platsen. ",
+                                    "E. Låtsas som ingenting och går tillbaka till de andra. "
+                                ],
+
+            "correct"       :   [
+                                    "2",
+                                    "3",
+                                    "1",
+                                    "5",
+                                    "4",
+                                ],
+            "explanation"   :   "Albert Einstein drafted the special theory of relativity in 1905.",
+        },
+        {
+            "question"      :   "11. Det har gått tre månader sedan katastrofen. Hur ser ditt liv ut?",
+            "image"         :   "",
+            "choices"       :   [
+                                    "A. Jag har accepterat att jag inte kommer att kunna flytta tillbaka och börjar vänja mig vid livet i mitt nya hem.",
+                                    "B. Jag har ingen aning om var jag bor – men jag vet att jag använder mina erfarenheter från det här till att hjälpa och stötta andra.",
+                                    "C. Jag bor fortfarande kvar, jag tror att riskerna är överdrivna, än har jag ju inte dött.",
+                                    "D. Jag har lämnat allt bakom mig och flyttat till andra sidan jorden.",
+                                    "E. Jag har flyttat till en ny plats men är djupt deprimerad över allt jag har förlorat."
+                                ],
+
+            "correct"       :   [
+                                    "4",
+                                    "5",
+                                    "1",
+                                    "3",
+                                    "2",
+                                ],
+            "explanation"   :   "Albert Einstein drafted the special theory of relativity in 1905.",
+        },
+
+    ];
+
+
+    /******* No need to edit below this line *********/
+    var currentquestion = 0, score = 0, submt=true, picked;
+
+    jQuery(document).ready(function($){
+
+        /**
+         * HTML Encoding function for alt tags and attributes to prevent messy
+         * data appearing inside tag attributes.
+         */
+        function htmlEncode(value){
+          return $(document.createElement('div')).text(value).html();
+        }
+
+        /**
+         * This will add the individual choices for each question to the ul#choice-block
+         *
+         * @param {choices} array The choices from each question
+         */
+        function addChoices(choices){
+            if(typeof choices !== "undefined" && $.type(choices) == "array"){
+                $('#choice-block').empty();
+                for(var i=0;i<choices.length; i++){
+                    $(document.createElement('li')).addClass('choice choice-box').attr('data-index', i).text(choices[i]).appendTo('#choice-block');                    
+                }
+            }
+        }
+        
+        /**
+         * Resets all of the fields to prepare for next question
+         */
+        function nextQuestion(){
+            submt = true;
+            $('#explanation').empty();
+            $('#question').text(quiz[currentquestion]['question']);
+            $('#pager').text('Fråga ' + Number(currentquestion + 1) + ' of ' + quiz.length);
+            if(quiz[currentquestion].hasOwnProperty('image') && quiz[currentquestion]['image'] != ""){
+                if($('#question-image').length == 0){
+                    $(document.createElement('img')).addClass('question-image').attr('id', 'question-image').attr('src', quiz[currentquestion]['image']).attr('alt', htmlEncode(quiz[currentquestion]['question'])).insertAfter('#question');
                 } else {
-                    window.location.replace("file:///Users/adga/code/EfterStormenTest/result4.html");
+                    $('#question-image').attr('src', quiz[currentquestion]['image']).attr('alt', htmlEncode(quiz[currentquestion]['question']));
                 }
+            } else {
+                $('#question-image').remove();
+            }
+            addChoices(quiz[currentquestion]['choices']);
+            setupButtons();
+        }
+
+        /**
+         * After a selection is submitted, checks if its the right answer
+         *
+         * @param {choice} number The li zero-based index of the choice picked
+         */
+        function processQuestion(choice){
+            //if(quiz[currentquestion]['choices'][choice] == quiz[currentquestion]['correct']){
+                // $('.choice').eq(choice).css({'background-color':'#50D943'});
+                // $('#explanation').html('<strong>Correct!</strong> ' + htmlEncode(quiz[currentquestion]['explanation']));
                 
-
-
-                if(myArray.length == 2){
-                    document.getElementById("quiz").style.display="none";
-                    document.getElementById("result-wrap").style.display="block";
-                    $( ".result" ).append( "<p>Två ja</p>" );
-                    
-                }else if (myArray.length == 1){
-                    document.getElementById("quiz").style.display="none";;
-                    document.getElementById("result-wrap").style.display="block";
-                    $( ".result" ).append( "<p>Ett ja</p>" );
-                }else if (myArray.length == 0){
-                    document.getElementById("quiz").style.display="none";;
-                    document.getElementById("result-wrap").style.display="block";
-                    $( ".result" ).append( "<p>Inget ja</p>" );
+                var points = parseFloat(quiz[currentquestion]['correct'][choice])
+                score = score + points;
+            //} else {
+                // $('.choice').eq(choice).css({'background-color':'#D92623'});
+                // $('#explanation').html('<strong>Incorrect.</strong> ' + htmlEncode(quiz[currentquestion]['explanation']));
+            //}
+            currentquestion++;
+            //$('#submitbutton').html('NEXT QUESTION &raquo;').on('click', function(){
+                if(currentquestion == quiz.length){
+                    endQuiz();
+                } else {
+                    //$(this).text('Check Answer').css({'color':'#222'}).off('click');
+                    nextQuestion();
                 }
+            //})
+        }
+
+        /**
+         * Sets up the event listeners for each button.
+         */
+        function setupButtons(){
+            $('.choice').on('mouseover', function(){
+                $(this).css({'background-color':'#e1e1e1'});
             });
-
+            $('.choice').on('mouseout', function(){
+                $(this).css({'background-color':'#fff'});
+            })
+            $('.choice').on('click', function(){
+                picked = $(this).attr('data-index');
+                $('.choice').removeAttr('style').off('mouseout mouseover');
+                $(this).css({'border-color':'#222','font-weight':700,'background-color':'#c1c1c1'});
+                $('.choice').off('click');
+                        $(this).off('click');
+                        processQuestion(picked);
+                // if(submt){
+                //     submt=false;
+                //     $('#submitbutton').css({'color':'#000'}).on('click', function(){
+                //         $('.choice').off('click');
+                //         $(this).off('click');
+                //         processQuestion(picked);
+                //     });
+                // }
+            })
+        }
+        
+        /**
+         * Quiz ends, display a message.
+         */
+        function endQuiz(){
+            if((score <= 11)) {
+                        window.location.replace("result1.html");
+                    } else if ((12 >= score) && (score <= 16)) {
+                        window.location.replace("result2.html");
+                    } else if ((17 >= score) && (score <= 21)) {
+                        window.location.replace("result3.html");
+                    } else if((22 >= score) && (score <= 26)){
+                        window.location.replace("result4.html");
+                    } else if((27 >= score) && (score <= 31)){
+                        window.location.replace("result5.html");
+                    } else if((32 >= score) && (score <= 36)){
+                        window.location.replace("result6.html");
+                    } else if((37 >= score) && (score <= 41)){
+                        window.location.replace("result7.html");
+                    } else if((42 >= score) && (score <= 47)){
+                        window.location.replace("result8.html");
+                    } else if((48 >= score) && (score <= 51)){
+                        window.location.replace("result9.html");
+                    } else {
+                        window.location.replace("result10.html");
+                    }
+            $('#explanation').empty();
+            $('#question').empty();
+            $('#choice-block').empty();
+            $('#submitbutton').remove();
+            $('#question').text("Du fick " + score + " poäng på " + quiz.length + " frågor");
             
-            
-        });
+        }
 
+        /**
+         * Runs the first time and creates all of the elements for the quiz
+         */
+        function init(){
+            //add title
+            if(typeof quiztitle !== "undefined" && $.type(quiztitle) === "string"){
+                $(document.createElement('h1')).text(quiztitle).appendTo('#frame');
+            } else {
+                $(document.createElement('h1')).text("Quiz").appendTo('#frame');
+            }
+
+            //add pager and questions
+            if(typeof quiz !== "undefined" && $.type(quiz) === "array"){
+                //add pager
+                $(document.createElement('p')).addClass('pager').attr('id','pager').text('Fråga 1 av ' + quiz.length).appendTo('#frame');
+                //add first question
+                $(document.createElement('h2')).addClass('question').attr('id', 'question').text(quiz[0]['question']).appendTo('#frame');
+                //add image if present
+                if(quiz[0].hasOwnProperty('image') && quiz[0]['image'] != ""){
+                    $(document.createElement('img')).addClass('question-image').attr('id', 'question-image').attr('src', quiz[0]['image']).attr('alt', htmlEncode(quiz[0]['question'])).appendTo('#frame');
+                }
+                $(document.createElement('p')).addClass('explanation').attr('id','explanation').html('&nbsp;').appendTo('#frame');
+            
+                //questions holder
+                $(document.createElement('ul')).attr('id', 'choice-block').appendTo('#frame');
+            
+                //add choices
+                addChoices(quiz[0]['choices']);
+            
+                //add submit button
+                // $(document.createElement('div')).addClass('choice-box').attr('id', 'submitbutton').text('Nästa fråga').css({'font-weight':700,'color':'#222','padding':'30px 0'}).appendTo('#frame');
+            
+                setupButtons();
+            }
+        }
+        
+        init();
+    });
     </script>
+    <style type="text/css" media="all">
+        /*css reset */
+        html,body,div,span,h1,h2,h3,h4,h5,h6,p,code,small,strike,strong,sub,sup,b,u,i{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0;} 
+        article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;} 
+        body{line-height:1; font:normal 0.9em/1em "Helvetica Neue", Helvetica, Arial, sans-serif; width: 94%; margin: 3%;} 
+        ol,ul{list-style:none;line-height:1.5;;}
+        strong{font-weight:700;}
+        h1{font:normal bold 2em/1.8em "Helvetica Neue", Helvetica, Arial, sans-serif;text-align:left;border-bottom:1px solid #999;padding:0;width:auto}
+        h2{font:italic bold 1.3em/1.2em "Helvetica Neue", Helvetica, Arial, sans-serif;padding:0;text-align:center;margin:20px 0;}
+        img.question-image{display:block;max-width:250px;margin:10px auto;border:1px solid #ccc;width:100%;height:auto;}
+        #choice-block{display:block;list-style:none;margin:0;padding:0;}
+        #submitbutton{background:#5a6b8c;}
+        #submitbutton:hover{background:#7b8da6;}
+        .choice-box{display:block;text-align:left;margin:8px auto;padding:.5em;border:1px solid #666;cursor:pointer;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;}
+    </style>
 </head>
-
 <body>
-
-</div>
-	<div id="page-wrap">
-
-		<h1>Efter Stormen – Test</h1>
-		
-		<form method="post" id="quiz">
-		
-            <ol>
-            
-                <li>
-                    <h3>Fråga 1</h3>
-
-                    <div>
-                        <input type="radio" name="ans1" id="ans11" class="activeInput" value="1" />
-                        <label for="ans11">1</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="ans1" id="ans12" class="activeInput" value="2" />
-                        <label for="ans12">2</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="ans1" id="ans13" class="activeInput" value="3" />
-                        <label for="ans13">3</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="ans1" id="ans14" class="activeInput" value="4" />
-                        <label for="ans14">4</label>
-                    </div>
-                </li>
-                
-                <li>
-                    <h3>Fråga 2</h3>
-                    <div>
-                        <input type="radio" name="ans2" id="ans21" class="activeInput" value="1" />
-                        <label for="ans21">1</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="ans2" id="ans22" class="activeInput" value="2" />
-                        <label for="ans22">2</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="ans2" id="ans23" class="activeInput" value="3" />
-                        <label for="ans23">3</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="ans2" id="ans24" class="activeInput" value="4" />
-                        <label for="ans24">4</label>
-                    </div>
-                </li>
-                <li>
-                    <h3>Fråga 3</h3>
-                    <div>
-                        <input type="radio" name="ans3" id="ans31" class="activeInput" value="1" />
-                        <label for="ans31">1</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="ans3" id="ans32" class="activeInput" value="2" />
-                        <label for="ans32">2</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="ans3" id="ans33" class="activeInput" value="3" />
-                        <label for="ans33">3</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="ans3" id="ans34" class="activeInput" value="4" />
-                        <label for="ans34">4</label>
-                    </div>
-                </li>
-                <li>
-                    <h3>Fråga 4</h3>
-                    <div>
-                        <input type="radio" name="ans4" id="ans41" class="activeInput" value="1" />
-                        <label for="ans41">1</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="ans4" id="ans42" class="activeInput" value="2" />
-                        <label for="ans42">2</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="ans4" id="ans43" class="activeInput" value="3" />
-                        <label for="ans43">3</label>
-                    </div>
-                    <div>
-                        <input type="radio" name="ans4" id="ans44" class="activeInput" value="4" />
-                        <label for="ans44">4</label>
-                    </div>
-                </li>
-            </ol>
-            
-            <a href="#" id="submit">Se resultat</a>
-		
-		</form>
-
-	   <div id="result-wrap">
-        <h3 class="result"></h3>
-
-       </div>
-	</div>
-<!--Result 
-$(".activeInput").each(function() {
-    if($(this).prop('checked') == true && $(this).val() == '1'){
-        myArray.push( "1" );
-    }
-});
-redirect-->
-
-
-<script type="text/javascript">
-	var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-68528-29']); _gaq.push(['_trackPageview']); (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga); })();
-</script>
+    <div id="frame" role="content"></div>
 </body>
-
 </html>
